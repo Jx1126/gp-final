@@ -57,12 +57,14 @@ function redChannelFilter(img, threshold) {
             if(threshold) {
                 if(red_channel_slider.value() > r){
                     r = 0;
+                } else {
+                    r = 255;
                 }
             }
         
             imgOutput.pixels[index + 0] = r;
-            imgOutput.pixels[index + 1] = 0;
-            imgOutput.pixels[index + 2] = 0;
+            imgOutput.pixels[index + 1] = threshold ? r : 0;
+            imgOutput.pixels[index + 2] = threshold ? r : 0;
             imgOutput.pixels[index + 3] = 255;
         }
     }
@@ -87,12 +89,14 @@ function greenChannelFilter(img, threshold) {
             if(threshold) {
                 if(green_channel_slider.value() > g){
                     g = 0;
+                } else {
+                    g = 255;
                 }
             }
             
-            imgOutput.pixels[index + 0] = 0;
+            imgOutput.pixels[index + 0] = threshold ? g : 0;
             imgOutput.pixels[index + 1] = g;
-            imgOutput.pixels[index + 2] = 0;
+            imgOutput.pixels[index + 2] = threshold ? g : 0;
             imgOutput.pixels[index + 3] = 255;
         }
     }
@@ -117,11 +121,13 @@ function blueChannelFilter(img, threshold) {
             if(threshold) {
                 if(blue_channel_slider.value() > b){
                     b = 0;
+                } else {
+                    b = 255;
                 }
             }
             
-            imgOutput.pixels[index + 0] = 0;
-            imgOutput.pixels[index + 1] = 0;
+            imgOutput.pixels[index + 1] = threshold ? b : 0;
+            imgOutput.pixels[index + 0] = threshold ? b : 0;
             imgOutput.pixels[index + 2] = b;
             imgOutput.pixels[index + 3] = 255;
         }
