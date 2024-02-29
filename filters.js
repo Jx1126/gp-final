@@ -290,8 +290,8 @@ function convolution(x, y, matrix, img) {
     
     for(var i = 0; i < matrix_size; i++) {
         for(var j = 0; j < matrix_size; j++) {
-            var x_pos = x + i - offset;
-            var y_pos = y + j - offset;
+            var x_pos = constrain(x + i - offset, 0, img.width - 1);
+            var y_pos = constrain(y + j - offset, 0, img.height - 1);
             
             var index = (y_pos * img.width + x_pos) * 4;
             index = constrain(index, 0, img.pixels.length - 1);
@@ -314,8 +314,8 @@ function pixelateFilter(img) {
     imgOutput.loadPixels();
     img.loadPixels();
     
-    for(var x = 0; x < img.width; x += pixelate_size) {
-        for(var y = 0; y < img.height; y += pixelate_size) {
+    for(var x = 0; x < img.width - (img.width % pixelate_size); x += pixelate_size) {
+        for(var y = 0; y < img.height - (img.height % pixelate_size); y += pixelate_size) {
 
             var total_intensity = 0;
             
