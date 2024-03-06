@@ -161,15 +161,13 @@ function convertToCMY(img, threshold) {
             if(threshold) {
                 if(cmy_slider.value() > cyan){
                     cyan = 0;
-                }
-
-                if(cmy_slider.value() > magenta){
                     magenta = 0;
-                }
-
-                if(cmy_slider.value() > yellow){
                     yellow = 0;
-                }   
+                } else {
+                    cyan = 255;
+                    magenta = 255;
+                    yellow = 255;
+                }
             }
                         
             imgOutput.pixels[index + 0] = cyan;
@@ -213,15 +211,13 @@ function convertToYCbCr(img, threshold) {
             // Task 10 - YCbCr colour space image thresholding with slider
             if(threshold) {
                 if(ycbcr_slider.value() > luma){
-                 luma = 0;
-                }
-
-                if(ycbcr_slider.value() > cb){
+                    luma = 0;
                     cb = 0;
-                }
-
-                if(ycbcr_slider.value() > cr){
                     cr = 0;
+                } else {
+                    luma = 255;
+                    cb = 255;
+                    cr = 255;
                 }
             }
                         

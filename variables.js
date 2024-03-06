@@ -58,3 +58,21 @@ var another_video;
 var detected_face = false;
 var classifier = objectdetect.frontalface;
 var foreground;
+
+// Extension page variables
+var extension_page = false;
+var player_head;
+var faces_ex;
+var extension_detect = false;
+var score = 0;
+var timer = 0;
+var coins = [];
+var fastest_time;
+
+var coins_drawn = false;
+var start_state = false;
+
+const extension_video_y = image_row_1 * 2;
+const extension_video_width = image_width * 4;
+const extension_video_x = image_column_2 * 0.8;
+const extension_video_height = image_height * 4;

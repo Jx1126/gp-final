@@ -1,9 +1,5 @@
 // Task 12 - Face Detection using Week 19 Coursera approach
 function setupFaceDetector() {
-    // Creating webcam video
-    detect_video = createCapture(VIDEO);
-    detect_video.size(image_width, image_height);
-    detect_video.hide();
     
     var scaleFactor = 1.2;
     detector = new objectdetect.detector(image_width, image_height, scaleFactor, classifier);
@@ -13,7 +9,7 @@ function setupFaceDetector() {
 function drawFilterVideo() {
     another_video = createCapture(VIDEO);
     another_video.size(image_width, image_height);
-    another_video.position(image_column_4, image_row_5)
+    another_video.position(image_column_4, image_row_1);
 }
 
 function getFrame() {
@@ -50,7 +46,7 @@ function drawFaceFilter() {
             
         // Task 13b - Blur filter at detected face
         } else if (key == 3) {
-                edited_face = blurFilter(detected_face);
+            edited_face = blurFilter(detected_face);
             
         // Task 13c - Colour converted filter at detected face
         } else if (key == 4) {
@@ -82,9 +78,19 @@ function drawFaceFilter() {
         pop();
         
     } else {
+        // Update all image
         capture_button_2.mousePressed(() => {
             foreground = another_video.get();
+            webcam_capture = foreground;
             detected_face = detectFaces(saved_frame);
+            console.log('Face updated for all images');
+        });
+
+        // Only update the face filter image
+        capture_button_3.mousePressed(() => {
+            foreground = another_video.get();
+            detected_face = detectFaces(saved_frame);
+            console.log('Face updated for face detection');
         });
     }
 }
